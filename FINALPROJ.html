@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="description" content="Ethan Palosh Computer Engineering + Computer Science Interactive Portfolio">
+
+    <title>Ethan Palosh | Portfolio</title>
+
+    <link rel="stylesheet" href="sharedStyle.css">
+
+    <style>
+        .button {
+            text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+        }
+
+        #main-content h2 {
+            text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+        }
+
+        h1 {
+            text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+        }
+
+        h2 {
+            text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+        }
+
+        h4 { 
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 5em;
+            margin: 0px;
+            padding-top: 0px;
+            padding-left: 20px;
+
+        }
+
+        h5 { 
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-size: 5em;
+            margin: 0px;
+            padding-top: 20px;
+            padding-left: 20px;
+
+        }
+
+		.scrolldown {
+			position: absolute;
+			top: 70%;
+			left: 50%; 
+			transform: translateX(-50%);
+			animation: moveDownwards .7s ease-in-out 2s forwards;
+			font-weight: 100;
+		}
+
+		@keyframes moveDownwards {
+			from {
+				top: 70%;
+			}
+			to {
+				top: 90%;
+			}
+		}
+
+		.typewriter {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: typing 3.5s steps(40, end);
+        }
+
+
+/* Container for the circles and arrows */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 180px;
+    /* margin-top: 20px; */
+  }
+
+  /* Circle styling */
+.circle {
+  letter-spacing: 0.5px;
+  width: 200px;
+  height: 120px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7em;
+  /* font-weight: bold; */
+  text-align: center;
+  position: relative;
+  animation: pulse 3s infinite ease-in-out; /* Added animation */
+}
+
+.circle:hover {
+  animation: none; /* Disable pulse animation on hover */
+  transform: scale(1.15); /* Apply hover scaling */
+  transition: transform 0.3s; /* Transition for smooth hover */
+}
+
+/* Pulse animation for circle */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Arrow styling */
+.arrow {
+  width: 50px;
+  height: 8px;
+  background-color: black;
+  position: relative;
+  margin-left: -10px;
+  flex-shrink: 0;
+}
+
+.arrow::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: -15px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+#circle-navigator {
+  height: 500px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  /* Adjust the container layout */
+  .container {
+    gap: 30px; /* Reduce gap between circles and arrows */
+    padding-top: 150px; /* Adjust padding for smaller screens */
+  }
+
+  /* Adjust the circle size */
+  .circle {
+    width: 150px; /* Reduce width */
+    height: 90px; /* Reduce height */
+    font-size: 1.2em; /* Adjust font size */
+  }
+
+  /* Adjust arrow size */
+  .arrow {
+    width: 40px; /* Make arrows smaller */
+    height: 6px;
+  }
+
+  /* Reduce height of the navigator section */
+  #circle-navigator {
+    height: 400px; /* Decrease height */
+  }
+
+  h4{
+    font-size: 4em;
+  }
+  h5{
+    font-size: 4em;
+  }
+}
+
+/* Media query for very small screens (like mobile phones) */
+@media (max-width: 920px) {
+  .container {
+    gap: 20px; /* Further reduce gap */
+    padding-top: 110px; /* Adjust padding */
+  }
+
+  .circle {
+    width: 120px; /* Further reduce circle size */
+    height: 72px;
+    font-size: 1em; /* Smaller font size */
+  }
+
+  .arrow {
+    width: 30px; /* Smaller arrows */
+    height: 5px;
+  }
+
+  #circle-navigator {
+    height: 300px; /* Adjust navigator height */
+  }
+
+  h4{
+    font-size: 2.5em;
+  }
+  h5{
+    font-size: 2.5em;
+  }
+}
+
+/* Media query for extremely small screens (less than 480px) */
+@media (max-width: 700px) {
+  /* Adjust the container layout for ultra-small screens */
+  .container {
+    /* flex-direction: column; Stack items vertically */
+    gap: 10px; /* Minimize gap */
+    padding-top: 80px; /* Reduce top padding */
+  }
+
+  /* Adjust the circle size */
+  .circle {
+    width: 80px; /* Make circles even smaller */
+    height: 45px;
+    font-size: 0.7em; /* Even smaller font size */
+  }
+
+  /* Adjust arrow size */
+  .arrow {
+    visibility: hidden;
+    width: 20px; /* Tiny arrows */
+    height: 3px;
+  }
+
+  /* Reduce height of the navigator section */
+  #circle-navigator {
+    height: 200px; /* Smaller navigator section */
+  }
+
+  h4{
+    font-size: 1.5em;
+  }
+  h5{
+    font-size: 1.5em;
+  }
+}
+
+.resume_image {
+    width: 250px;
+    height: 250px;
+  }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="FINALPROJ.html">Home</a>
+        <a href="FormulaSAE.html">Formula SAE</a>
+        <a href="PersonalProjects.html">Robotics</a>
+        <a href="Research.html">Research</a>
+    </div>
+
+    <div id="header">
+        <h1>Ethan Palosh</h1>
+        <h2>Computer Science & Engineering</h2>
+        <div class="scrolldown">scroll down.</div>
+    </div>
+
+    <div id="circle-navigator">
+        <!-- <h5 id="quickref">Overview:</h5> -->
+
+        <div class="container">
+            <div class="circle">/Resume</div>
+            <div class="arrow"></div>
+            <div class="circle">/Projects</div>
+            <div class="arrow"></div>
+            <div class="circle">/Contact</div>
+            <div class="arrow"></div>
+            <div class="circle">/About_Me</div>
+          </div>
+
+          <!-- <div class="container">
+            YAY
+          </div> -->
+    </div>
+    
+    <div id="homepage-main-content1">
+
+   
+        
+        <h4 id="resumetitle">/Resume</h4>
+
+        <br><br>
+
+        <body_resume>
+
+            <div class="container_resume">
+
+                <img class="resume_image" src="img/resume/foreflight.png" alt="foreflight logo">
+
+                
+            </div_resume>
+            
+        </body_resume>
+
+    </div>
+
+
+
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        
+        <div class="button-container">
+            <h2>My projects:</h2>
+        </div>
+
+        <br><br><br>
+
+        <div class="button-container">
+            <a href="FormulaSAE.html" class="button">Formula SAE</a>
+            <a href="Robotics.html" class="button">Robotics</a>
+            <a href="Research.html" class="button">Research</a>
+            <a href="ComingSoon.html" class="button">Coming Soon</a>
+        </div>
+
+        <div class="button-container">
+            <a href="ComingSoon.html" class="button">Coming Soon</a>
+            <a href="ComingSoon.html" class="button">Coming Soon</a>
+            <a href="ComingSoon.html" class="button">Coming Soon</a>
+            <a href="ComingSoon.html" class="button">Coming Soon</a>
+        </div>
+
+		<br><br><br><br><br><br><br><br><br>
+
+
+
+    <!-- </div> -->
+
+    <div id="homepage-main-content2">
+        <h5>Projects</h5>
+
+        
+
+        
+    </div>
+
+    <div class="bigimageContainer">
+
+        <img class="bigimage" src="img/formulaSAE/flyby.jpeg" alt="flyby">
+
+    </div> <!-- big image container-->
+
+    <div id="footer">
+        
+        HTML by me.
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+	<!-- Text Animation javascript code - referenced and modified for my use: -->
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Function to animate typing effect
+            function typeWriter(text, i, fnCallback) {
+                if (i < (text.length)) {
+                    // Add next character to h1
+                    $('#header h1').html(text.substring(0, i+1));
+                    // Wait for a while then call this function again for next character
+                    setTimeout(function() {
+                        typeWriter(text, i + 1, fnCallback)
+                    }, 100);
+                }
+                // End of typing, call callback if it is defined
+                else if (typeof fnCallback == 'function') {
+                    setTimeout(fnCallback, 700);
+                }
+            }
+            // Start the typing animation for h1 element
+            function StartTextAnimation(i) {
+                if (typeof dataText[i] == 'undefined'){
+                    setTimeout(function() {
+                        StartTextAnimation(0);
+                    }, 20000); // Change time here to adjust pause between typing cycles
+                }
+                // Check if dataText[i] exists
+                if (i < dataText[i].length) {
+                    // Start typewriter animation
+                    typeWriter(dataText[i], 0, function(){
+                        // Call function again to start next text
+                        StartTextAnimation(i + 1);
+                    });
+                }
+            }
+            // Data for typewriter effect
+            var dataText = [ ">Ethan Palosh"];
+            // Start the typewriter animation
+            StartTextAnimation(0);
+        });
+
+    </script>
+
+
+</body>
+</html>
