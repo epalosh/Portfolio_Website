@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="sharedStyle.css">
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
         .button {
             text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
         }
@@ -19,10 +23,14 @@
 
         h1 {
             text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         h2 {
             text-shadow: 0 0 100px white, 0 0 1px white, 0 0 15px white;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         h4 { 
@@ -47,7 +55,7 @@
 
 		.scrolldown {
 			position: absolute;
-			top: 70%;
+			top: 80%;
 			left: 50%; 
 			transform: translateX(-50%);
 			animation: moveDownwards .7s ease-in-out 2s forwards;
@@ -56,7 +64,7 @@
 
 		@keyframes moveDownwards {
 			from {
-				top: 70%;
+				top: 80%;
 			}
 			to {
 				top: 90%;
@@ -72,100 +80,36 @@
         }
 
 
-/* Container for the circles and arrows */
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    padding-top: 180px;
-    /* margin-top: 20px; */
-  }
 
-  /* Circle styling */
-.circle {
-  letter-spacing: 0.5px;
-  width: 200px;
-  height: 120px;
-  background-color: black;
-  color: white;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.7em;
-  /* font-weight: bold; */
-  text-align: center;
-  position: relative;
-  animation: pulse 3s infinite ease-in-out; /* Added animation */
-}
-
-.circle:hover {
-  animation: none; /* Disable pulse animation on hover */
-  transform: scale(1.15); /* Apply hover scaling */
-  transition: transform 0.3s; /* Transition for smooth hover */
-}
-
-/* Pulse animation for circle */
+/* Pulse animation for node */
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
-}
-
-/* Arrow styling */
-.arrow {
-  width: 50px;
-  height: 8px;
-  background-color: black;
-  position: relative;
-  margin-left: -10px;
-  flex-shrink: 0;
-}
-
-.arrow::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  right: -15px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent transparent transparent black;
-}
-
-#circle-navigator {
-  height: 500px;
-  background-color: rgb(255, 255, 255);
 }
 
 /* Media query for screens smaller than 1200px */
 @media (max-width: 1200px) {
   /* Adjust the container layout */
   .container {
-    gap: 30px; /* Reduce gap between circles and arrows */
-    padding-top: 150px; /* Adjust padding for smaller screens */
+    gap: 30px; /* Reduce gap between nodes and arrows */
+    padding-top: 55px; /* Adjust padding for smaller screens */
   }
 
-  /* Adjust the circle size */
-  .circle {
-    width: 150px; /* Reduce width */
-    height: 90px; /* Reduce height */
+  /* Adjust the node size */
+  .node {
+    width: 135px; /* Reduce width */
+    height: 60px; /* Reduce height */
     font-size: 1.2em; /* Adjust font size */
-  }
-
-  /* Adjust arrow size */
-  .arrow {
-    width: 40px; /* Make arrows smaller */
-    height: 6px;
+    border-radius: 15px;
   }
 
   /* Reduce height of the navigator section */
-  #circle-navigator {
-    height: 400px; /* Decrease height */
+  #node-navigator {
+    height: 200px; /* Decrease height */
   }
 
   h4{
@@ -174,28 +118,32 @@
   h5{
     font-size: 4em;
   }
+  .button-container {
+    padding-top:0px;
+  }
 }
 
 /* Media query for very small screens (like mobile phones) */
 @media (max-width: 920px) {
   .container {
     gap: 20px; /* Further reduce gap */
-    padding-top: 110px; /* Adjust padding */
+    padding-top: 38px; /* Adjust padding */
   }
 
-  .circle {
-    width: 120px; /* Further reduce circle size */
-    height: 72px;
+  .node {
+    width: 110px; /* Further reduce node size */
+    height: 50px;
     font-size: 1em; /* Smaller font size */
+    border-radius: 10px;
   }
 
+  /* Adjust arrow size */
   .arrow {
-    width: 30px; /* Smaller arrows */
-    height: 5px;
+    visibility: hidden;
   }
 
-  #circle-navigator {
-    height: 300px; /* Adjust navigator height */
+  #node-navigator {
+    height: 140px; /* Adjust navigator height */
   }
 
   h4{
@@ -212,26 +160,25 @@
   .container {
     /* flex-direction: column; Stack items vertically */
     gap: 10px; /* Minimize gap */
-    padding-top: 80px; /* Reduce top padding */
+    padding-top: 22px; /* Reduce top padding */
   }
 
-  /* Adjust the circle size */
-  .circle {
-    width: 80px; /* Make circles even smaller */
-    height: 45px;
+  /* Adjust the node size */
+  .node {
+    width: 80px; /* Make nodes even smaller */
+    height: 35px;
     font-size: 0.7em; /* Even smaller font size */
+    border-radius: 8px;
   }
 
   /* Adjust arrow size */
   .arrow {
     visibility: hidden;
-    width: 20px; /* Tiny arrows */
-    height: 3px;
   }
 
   /* Reduce height of the navigator section */
-  #circle-navigator {
-    height: 200px; /* Smaller navigator section */
+  #node-navigator {
+    height: 100px; /* Smaller navigator section */
   }
 
   h4{
@@ -243,9 +190,278 @@
 }
 
 .resume_image {
-    width: 250px;
-    height: 250px;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    box-shadow: -8px -8px 30px 4px rgba(49, 49, 49, 0.1);
+    border-radius: 20px;
   }
+
+  .headshot_image {
+    flex-shrink: 0;
+    width: 100%; /* Allow scaling */
+    margin-top: 10px;
+    max-width: 275px; /* Restrict max size */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: -8px -8px 30px 4px rgba(49, 49, 49, 0.1);
+    border-radius: 20px;
+    object-fit: contain; /* Ensure proper scaling without cropping */
+  }
+
+  .content-container {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+#resumeSection {
+    padding-top: 0px;
+}
+
+.resume_title{
+    padding-top: 0px;
+    font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    font-weight: 600;
+    text-shadow: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.resume_subtitle{
+    padding-top: 0px;
+    font-size: 1.75em;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(94, 94, 94);
+    text-shadow: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.resume_body{
+    padding-top: 0px;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: none;
+
+    word-wrap: break-word; /* Allows long words to wrap to the next line */
+    white-space: normal; /* Ensures that text will wrap and not overflow */
+    line-height: 1.5; /* Optional: improves readability */
+}
+
+.indented_resume_body{
+    padding-left: 20px;
+    font-weight: 400;
+}
+
+.resume_text{
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.indented_spacing{
+    line-height: 10%;
+}
+
+#projects{
+    color: white;
+}
+
+#detailer_image{
+    width: 210px;
+    height: 264px;
+}
+
+
+
+
+
+
+/* Existing styles */
+#projectSection {
+    font-family: 'Courier New', Courier, monospace; 
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 100%;
+    width: 90%;
+    padding: 40px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative; /* Allows positioning of overlay text */
+}
+
+.grid-item a {
+    display: block;
+    width: 90%;
+}
+
+.grid-image {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.grid-item:hover .grid-image {
+    transform: scale(1.05);
+    opacity: .3;
+}
+
+.grid-item:hover .overlay-text {
+    opacity: 1;
+}
+
+.description {
+    font-weight: bold;
+    margin-top: 8px;
+    font-size: 1.6em;
+}
+
+/* New styles for overlay text on hover */
+.overlay-text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 100%;
+}
+
+.littleText{
+  color: white;
+  text-align: center;
+}
+
+#resumepdf{
+  color: white;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+#aboutMeSection {
+  visibility: hidden;
+}
+#projectsSection {
+  visibility: hidden;
+}
+
+/* Stack items vertically on smaller screens */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .headshot_image{
+      width: 200px;
+    }
+}
+
+@media (max-width: 1000px) {
+
+.headshot_image{
+  width: 150px;
+}
+}
+
+@media (max-width: 925px) {
+
+    .headshot_image{
+      visibility: hidden; 
+   }
+}
+
+
+
+
+
+
+.container_resume {
+    
+    box-sizing: border-box;
+}
+
+#profile {
+  padding-bottom: 30px;
+}
+
+
+.button-container {
+            padding-top:10px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-button img {
+            width: 30px;
+            height: 30px;
+            margin-right: 8px;
+        }
+
+        .social-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .github {
+            background-color: #24292f;
+        }
+
+        .linkedin {
+            background-color: #0077b5;
+        }
+
+        .pdf {
+            background-color: #d32f2f;
+        }
+
+
     </style>
 
 </head>
@@ -254,9 +470,10 @@
 
     <div class="navbar">
         <a href="FINALPROJ.html">Home</a>
-        <a href="FormulaSAE.html">Formula SAE</a>
-        <a href="PersonalProjects.html">Robotics</a>
-        <a href="Research.html">Research</a>
+        <a href="#aboutMeSection">/About</a>
+        <a href="#projectsSection">/Projects</a>
+        <a href="#resumeSection">/Resume</a>
+        <!-- <a href="#contactSection">/Contact</a> -->
     </div>
 
     <div id="header">
@@ -264,91 +481,297 @@
         <h2>Computer Science & Engineering</h2>
         <div class="scrolldown">scroll down.</div>
     </div>
-
-    <div id="circle-navigator">
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+    <!-- <div id="node-navigator"> -->
         <!-- <h5 id="quickref">Overview:</h5> -->
 
-        <div class="container">
-            <div class="circle">/Resume</div>
+        <!-- <div class="container">
+            <a class="node" href="#projectsSection">/Projects</a>
             <div class="arrow"></div>
-            <div class="circle">/Projects</div>
+            <a class="node" href="#resumeSection">/Resume</a>
             <div class="arrow"></div>
-            <div class="circle">/Contact</div>
+            <a class="node" href="#contactSection">/Contact</a>
             <div class="arrow"></div>
-            <div class="circle">/About_Me</div>
-          </div>
+            <a class="node" href="#aboutMeSection">/About_Me</a>
+          </div> -->
 
           <!-- <div class="container">
             YAY
           </div> -->
-    </div>
-    
-    <div id="homepage-main-content1">
+    <!-- </div> -->
 
-   
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+    
+        <!-- <div class="littleText">here we go!</div> -->
+
         
-        <h4 id="resumetitle">/Resume</h4>
+
+        
+      <hr id="aboutMeSection"style="width: 95%; border: 0.5px solid white; margin: 20px auto;">
+      <br><br>
+        <!-- <h5>About Me</h5> -->
+
+        <div>
+        <body_resume>
+
+          <div class="container_resume" id="profile"> <!-- paper -->
+              <div class="content-container">
+                  <div class="resume_text">
+                      <h1 class="resume_title">Ethan Palosh</h1>
+                      
+                      <h2 class="resume_subtitle">Undergraduate at the University of Southern California</h2>
+                      <br>
+                      <div class="resume_body">
+                          <!-- <div>At Foreflight, I worked alongside full-time engineers to design and develop internal software for user-data publisher infrastructure.</div> -->
+
+                          <div>Hey! My name is Ethan Palosh, and this is my website portfolio! Below, you will find my projects, professional experience, and more about me! </div>
+                          
+                          <br>
+                          <div class="button-container">
+                            <!-- LinkedIn Button -->
+                            <a href="https://www.linkedin.com/in/ethanpalosh/" class="social-button linkedin" target="_blank">
+                                <img src="img/linkedin.png" alt="LinkedIn Icon">
+                                LinkedIn
+                            </a>
+                    
+                            <!-- GitHub Button -->
+                            <a href="https://github.com/epalosh" class="social-button github" target="_blank">
+                                <img src="img/github.png" alt="GitHub Icon">
+                                GitHub
+                            </a>
+                    
+                            <!-- PDF Reference Letter Button -->
+                            <a href="EthanPaloshForeFlightLetterRecommendation.pdf" class="social-button pdf" target="_blank">
+                                
+                                Letter of rec.
+                            </a>
+                        </div>
+                          
+                          <!-- <div class="indented_resume_body">
+                              <div>+ Demonstrated rapid proficiency in the Apple Development environment for both front-end and back-end development.</div>
+                              <div>+ Practiced agile best-practices, participated in a PR workflow, and wrote automated tests for all code.</div>
+                              <div>+ Contributed effectively and knowledgeably to conceptual system design discussions.</div>
+                          </div>
+                          <br>
+                          <div>My engineering manager highlights my quality of work, enthusiasm, and eagerness to learn in his <a href="EthanPaloshForeFlightLetterRecommendation.pdf" target="_blank">letter of recommendation</a>.</div> -->
+                      </div>
+                  </div>
+                  <img class="headshot_image" src="img/headshot.png" alt="Picture of me!">
+              </div>              
+              
+          </div_resume>
+      </body_resume>
+    </div>
+
+        <br><br><br>
+       
+
+
+        <hr id="projectsSection" style="width: 95%; border: 0.5px solid white; margin: 20px auto;">
+
+        <br><br>
+        <h5>Projects</h5>
+        
+        <div id="projectSection">
+            <div class="grid-container">
+                <!-- Repeat this grid-item block for each image link -->
+                <div class="grid-item">
+                    <a href="https://apps.apple.com/us/app/detailer-stay-connected/id6504883187" target="_blank">
+                    <img src="img/projects/detailer.png" alt="Description 1" class="grid-image">
+                    </a>
+                    <div class="overlay-text">Swift, Full-Stack, Firebase</div>
+                    <div class="description">Published iOS App!</div>
+                </div>
+
+                <div class="grid-item">
+                  <a href="https://github.com/epalosh/Custom_CAN_Dashboard" target="_blank">
+                  <img src="img/projects/dashboard.png" alt="Description 1" class="grid-image">
+                  </a>
+                  <div class="overlay-text">C++, Custom Electronics</div>
+                  <div class="description">Custom Dashboard</div>
+              </div>
+
+            </div>
+
+            <div class="grid-container">
+                <!-- Repeat this grid-item block for each image link -->
+
+                <div class="grid-item">
+                  <a href="https://github.com/epalosh/Leo-The-SurveyBot" target="_blank">
+                  <img src="img/projects/survey.png" alt="Description 1" class="grid-image">
+                  </a>
+                  <div class="overlay-text">C++, Arduino</div>
+                  <div class="description">Door-Mounted Survey</div>
+              </div>
+
+                <div class="grid-item">
+                  <a href="https://github.com/epalosh/Portfolio_Website" target="_blank">
+                  <img src="img/projects/portfolio_website.png" alt="Description 2" class="grid-image">
+                  </a>
+                  <div class="overlay-text">HTML, JavaScript</div>
+                  <div class="description">Website Portfolio</div>
+              </div>
+                
+                <div class="grid-item">
+                    <a href="" target="_blank">
+                    <img src="img/projects/blank.png" alt="Description 2" class="grid-image">
+                    </a>
+                    <div class="overlay-text">AI, Tensorflow</div>
+                    <div class="description">In progress</div>
+                </div>
+
+                <div class="grid-item">
+                    <a href="">
+                    <img src="img/projects/blank.png" alt="Description 1" class="grid-image">
+                    </a>
+                    <div class="overlay-text">AI, Tensorflow</div>
+                    <div class="description">In progress</div>
+                </div>
+            </div>
+        </div>
+
+
+    <div id="homepage-main-content1">
+        
+      <hr id="resumeSection" style="width: 95%; border: 0.5px solid white; margin: 20px auto;">
+      <br><br>
+        <h5>Resume</h5>
+        <br>
+        <div id="resumepdf">
+          [<a id="resumepdf" href="Resume.pdf" target="_blank">Click Here For Professional PDF</a>]
+        </div>
 
         <br><br>
 
         <body_resume>
 
-            <div class="container_resume">
+            <div class="container_resume"> <!-- paper -->
 
-                <img class="resume_image" src="img/resume/foreflight.png" alt="foreflight logo">
+                <!-- Foreflight -->
+                <div class="content-container">
+                    <img class="resume_image" src="img/resume/foreflight.png" alt="foreflight logo">
+                    <div class="resume_text">
+                        <h1 class="resume_title">Foreflight</h1>
+                        
+                        <h2 class="resume_subtitle">Software Engineering Intern</h2>
+                        <br>
+                        <div class="resume_body">
+                            <div>At Foreflight, I worked alongside full-time engineers to design and develop internal software for user-data publisher infrastructure.</div>
+                            <br>
+                            <div class="indented_resume_body">
+                                <div>+ Developed production code in Swift, Java, and Objective-C.</div>
+                                <div>+ Demonstrated rapid proficiency in the Apple Development environment for both front-end and back-end development.</div>
+                                <div>+ Practiced agile best-practices, participated in a PR workflow, and wrote automated tests for all code.</div>
+                                <!-- <div>+ Researched and proposed improvements to my team's workflow, which improved versioning efforts and overall productivity.</div> -->
+                                <div>+ Contributed effectively and knowledgeably to conceptual system design discussions.</div>
+                            </div>
+                            <br>
+                            <div>My engineering manager highlights my quality of work, enthusiasm, and eagerness to learn in his <a href="EthanPaloshForeFlightLetterRecommendation.pdf" target="_blank">letter of recommendation</a>.</div>
+                        </div>
+                    </div>
+                </div>              
+                
+                <br>
+                <hr style="padding:20px, width: 100%; border: 0.5px solid black;">
+                <br>
 
+                <!-- NASA -->
+                <div class="content-container">
+
+                    <img class="resume_image" src="img/resume/nasa.png" alt="nasa logo">
+                    
+                    <div class="resume_text">
+                        <h1 class="resume_title">NASA</h1>
+                        
+                        <h2 class="resume_subtitle">Research Intern</h2>
+                        <br>
+                        <div class="resume_body">
+                            <div>At NASA, I co-authored a research publication and served a role providing quantatative metrics on classified satelite data.</div>
+                            <br>
+                            <div class="indented_resume_body">
+                                <div>+ Analyzed millions of datapoints in classified NASA satelite datasets using JavaScript and Python.</div>
+                                <div>+ Contributed meaningfully to an original research paper investigating the El Niño/La Niña Phenomenon.</div>
+                                <div>+ Developed additional graphics and animations to visualize the team's discoveries in presentation materials.</div>
+                                <div>+ Co-presented our paper at the AGU Scientific Conference.</div>
+                            </div>
+                            <br>
+                            <div>View the abstract of our paper <a href="https://agu.confex.com/agu/fm22/meetingapp.cgi/Paper/1122339" target="_blank">here</a>.</div>
+                        </div>
+                    </div>
+                </div>     
+
+                <br>
+                <hr style="padding:20px, width: 100%; border: 0.5px solid black;">
+                <br>
+
+                <!-- USC Racing -->
+                <div class="content-container">
+
+                    <img class="resume_image" src="img/resume/racing.png" alt="USC racing logo">
+                    
+                    <div class="resume_text">
+                        <h1 class="resume_title">USC Racing</h1>
+                        
+                        <h2 class="resume_subtitle">Head Software Engineer</h2>
+                        <br>
+                        <div class="resume_body">
+                            <div>As part of USC's Formula SAE project design team, I manage all custom software on our formula racing car.</div>
+                            <br>
+                            <div class="indented_resume_body">
+                                <div>+ Designed, constructed, and wrote code for a custom driver dashboard interface in C++ utilizing CAN networking.</div>
+                                <div>+ Developed custom ECU firmware to satisfy strict competition safety guidelines.</div>
+                                <div>+ Tested, and documented hundreds of components on the car's wiring harness in RapidHarness CAD software.</div>
+                                <div>+ As driver: Comprehensive knowledge of car and mental agility to perform in high-stakes environments.</div>
+                            </div>
+                            <br>
+                            <div>Learn about the team <a href="https://www.uscformulasae.com/" target="_blank">here</a>.</div>
+                        </div>
+                    </div>
+                </div>     
+
+                <br>
+                <hr style="padding:20px, width:100%; border:0.5px solid black;">
+                <br>
+
+                <!-- Robotics -->
+                <div class="content-container">
+
+                    <img class="resume_image" src="img/resume/robotics.png" alt="Robot">
+                    
+                    <div class="resume_text">
+                        <h1 class="resume_title">Competition Robotics</h1>
+                        
+                        <h2 class="resume_subtitle">Autonomous Software Specialist</h2>
+                        <br>
+                        <div class="resume_body">
+                            <div>Responsible for all autonomous software and utilized advanced techniques to succeed in global competition.</div>
+                            <br>
+                            <div class="indented_resume_body">
+                                <div>+ Responsible for all autonomous software and sensors on robot. <b>Ranked 3rd in world for autonomous control.</b></div>
+                                <div>+ Utilized advanced techniques: sensor fusion localization, computer vision, and object tracking for 100% of autonomous control period.</div>
+                                <div>+ Designed a unique autonomous path that accurately traverses variable terrain using computer vision, giving our team a distinct advantage.</div>
+                                <div>+ Served in community STEM outreach efforts - FRC 2468 earned top 6 in the world (finalists) for Impact Award.</div>
+                            </div>
+                            <br>
+                            <div>FRC 2468 is a globally recognized program in competition robotics.</div>
+                        </div>
+                    </div>
+                </div>     
+                
                 
             </div_resume>
-            
         </body_resume>
-
     </div>
-
-
+    
+    <!-- <br><br><br><br><br>
+    <hr id="contactSection" style="width: 95%; border: 0.5px solid white; margin: 20px auto;">
+      <br><br><br><br><br>
+        <h5>Contact</h5>
 
         <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-        
-        <div class="button-container">
-            <h2>My projects:</h2>
-        </div>
-
+  -->
         <br><br><br>
-
-        <div class="button-container">
-            <a href="FormulaSAE.html" class="button">Formula SAE</a>
-            <a href="Robotics.html" class="button">Robotics</a>
-            <a href="Research.html" class="button">Research</a>
-            <a href="ComingSoon.html" class="button">Coming Soon</a>
-        </div>
-
-        <div class="button-container">
-            <a href="ComingSoon.html" class="button">Coming Soon</a>
-            <a href="ComingSoon.html" class="button">Coming Soon</a>
-            <a href="ComingSoon.html" class="button">Coming Soon</a>
-            <a href="ComingSoon.html" class="button">Coming Soon</a>
-        </div>
-
-		<br><br><br><br><br><br><br><br><br>
-
-
-
-    <!-- </div> -->
-
-    <div id="homepage-main-content2">
-        <h5>Projects</h5>
-
-        
-
-        
-    </div>
-
-    <div class="bigimageContainer">
-
-        <img class="bigimage" src="img/formulaSAE/flyby.jpeg" alt="flyby">
-
-    </div> <!-- big image container-->
+ 
 
     <div id="footer">
         
