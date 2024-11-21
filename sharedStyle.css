@@ -167,6 +167,7 @@ ul{
 
 /* Style the navigation bar */
 .navbar {
+    font-family:'Courier New', Courier, monospace;
     overflow: hidden;
     background-color: black;
     position: fixed; /* Set the navbar to fixed position */
@@ -268,4 +269,69 @@ ul{
     border-radius: 20px;
     box-shadow: -8px -8px 30px 4px rgba(255, 255, 255, 0.253);
     min-width: 600px;
+}
+
+
+.button-container {
+    padding-top: 40px;
+    display: flex;
+    align-items: center;    /* Center vertically */
+    flex-wrap: wrap;
+    justify-content: center; /* Center align the buttons */
+    gap: 20px; /* Reduce gap for smaller screens */
+}
+
+.social-button {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px; /* Slightly wider for more spacing */
+    height: 50px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.social-button img {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+.social-button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* .social-button:hover img {
+    transform: scale(1.1);
+} */
+
+.github {
+    background-color: #333; /* Darker gray for GitHub */
+}
+
+.linkedin {
+    background-color: #0077b5; /* Standard LinkedIn color */
+}
+
+.pdf {
+    background-color: #d32f2f; /* Red for PDF to signify importance */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-button {
+        width: 100%; /* Full width on smaller screens */
+        height: 60px; /* Taller for touch interaction */
+        font-size: 16px; /* Larger text */
+    }
 }
